@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
     
     formats: ['image/webp'],
   },
-  
+  output: "export",
 };
 
 export default nextConfig;

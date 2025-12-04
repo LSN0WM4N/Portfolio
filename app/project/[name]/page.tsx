@@ -4,6 +4,14 @@ import ProjectReadme from "@/components/project/readme";
 
 import { getRepoData } from "@/lib/github";
 
+const projects = ['ChatLite', "ConwaysLifeGame", "TickTackToe", "ROADMAD-Projects", "DominoPlayer"];
+
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    name: project,
+  }));
+}
+
 
 export default async function Project({ params }: { params: Promise<{ name: string }> }) {
   const { name } = await params;
