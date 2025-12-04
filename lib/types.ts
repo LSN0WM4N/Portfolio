@@ -1,0 +1,28 @@
+export type RepoResponseType = {
+	repo: {
+		id: string,
+		name: string,
+		full_name: string,
+		description: string,
+		html_url: string,
+		homepage: string,
+		stargazers_count: number,
+		forks_count: number,
+		watchers_count: number,
+		language: string,
+		languages: Record<string, number>,
+		topics: string[],
+		created_at: string,
+		updated_at: string,
+		pushed_at: string,
+		size: number,
+		license: string,
+		default_branch: string,
+		has_wiki: boolean,
+		has_pages: boolean,
+		archived: boolean,
+		private: boolean,
+	},
+	readme: string,
+	languages: Record<string, number>
+}
