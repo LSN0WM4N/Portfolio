@@ -58,7 +58,7 @@ function GotoGithub({
 				href={ html_url}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="inline-flex items-center gap-2 px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors"
+				className="inline-flex items-center gap-2 px-5 py-3 bg-gray-900/50 text-white rounded-lg hover:bg-black transition-colors"
 			> Go to GitHub </a>
 			{ homepage && (
 				<a

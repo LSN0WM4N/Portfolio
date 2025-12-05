@@ -33,7 +33,7 @@ export default function ProjectReadme({
 			/>
 
 
-			<div className="bg-gray-900 rounded-xl border border-gray-800 p-6">
+			<div className="bg-gray-900/50 rounded-xl border border-gray-800 p-6">
 				<div className="flex items-center justify-between mb-6">
 					<h2 className="text-2xl font-bold">README.md</h2>
 					<Link

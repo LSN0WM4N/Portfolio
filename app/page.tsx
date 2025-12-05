@@ -2,8 +2,8 @@ import Header from "@/components/header/header";
 import Banner from "@/components/banner";
 
 import Projects from "@/components/projects/projects";
-import Experience from "@/components/experience";
-import Skills from "@/components/skills";
+import Experience from "@/components/experience/experience";
+import Skills from "@/components/skills/skills";
 import Contact from "@/components/contact";
 
 import Footer from "@/components/footer";
@@ -17,10 +17,8 @@ export default function Home() {
       </section>
 
       <section className="flex flex-col gap-2">
-        <Projects /> 
-        <hr />
         <Experience /> 
-        <hr />
+        <Projects /> 
         <Skills /> 
         <hr />
         <Contact /> 

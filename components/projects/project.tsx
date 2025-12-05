@@ -23,7 +23,7 @@ export function Project({
   return (
     <Link 
 			href={repoUri}
-			className="w-full max-w-100 mx-auto p-6 rounded-xl border border-white/10 bg-black/30 backdrop-blur-sm text-white flex gap-2"
+			className="w-full max-w-100 mx-auto p-6 rounded-xl border border-white/10 bg-gray-900/50 backdrop-blur-sm text-white flex gap-2"
     >
       <section className="flex flex-col justify-start gap-1">
         <Image

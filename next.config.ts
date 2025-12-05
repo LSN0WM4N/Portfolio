@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import withFlowbiteReact from "flowbite-react/plugin/nextjs";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -21,8 +22,9 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     
     formats: ['image/webp'],
+    unoptimized: true,
   },
   output: "export",
 };
 
-export default nextConfig;
+export default withFlowbiteReact(nextConfig);

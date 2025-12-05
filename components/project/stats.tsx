@@ -40,7 +40,7 @@ export default function Stats({
 	return (
 		<div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
 			{stats.map(({ name, value, color, Icon }) => (
-				<div key={`stat-${name}-${value}`} className="bg-gray-900 px-4 py-1 rounded-lg border border-gray-800">
+				<div key={`stat-${name}-${value}`} className="bg-gray-900/50 px-4 py-1 rounded-lg border border-gray-800">
 					<div className="flex items-center justify-between gap-1">
 						<div className="rounded">
 							<Icon className={`w-4 h-4 ${ color }`}/>

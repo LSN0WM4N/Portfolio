@@ -1,8 +1,8 @@
 "use client"
 
-import { CPlusPlus, Go, Javascript, Python, Typescript } from "@/components/projects/icons";
 import { formatBytes } from "@/lib/utils";
 import Metadata from "./metadata";
+import { LanguageIcon } from "../../common/LanguageIcon";
 
 interface Props {
 	language: string;
@@ -53,14 +53,14 @@ function Languages({ languages }: { languages: {
 }[] }) {
 
 	return (
-		<div className="bg-gray-900 rounded-xl border border-gray-800 p-6">
+		<div className="bg-gray-900/50 rounded-xl border border-gray-800 p-6">
 			<h3 className="font-bold text-lg mb-4">Languages</h3>
 			<div className="space-y-3">
 				{languages.map(({ language, percentage, bytes }) => (
 					<div key={language}>
 						<div className="flex justify-between text-sm mb-1">
 							<div className="flex items-center gap-2">
-								{getLanguageIcon(language)}
+								<LanguageIcon language={language}/>
 								<span>{language}</span>
 							</div>
 							<span>{percentage}%</span>
@@ -86,7 +86,7 @@ function Topics({ topics }: { topics?: string[] }) {
 		return;
 
 	return (
-		<div className="bg-gray-900 rounded-xl border border-gray-800 p-6">
+		<div className="bg-gray-900/50 rounded-xl border border-gray-800 p-6">
 			<h3 className="font-bold text-lg mb-4">Topics:</h3>
 			<div className="flex flex-wrap gap-2">
 				{topics.map((topic) => (
@@ -100,12 +100,3 @@ function Topics({ topics }: { topics?: string[] }) {
 	);
 }
 
-function getLanguageIcon(language: string) {
-	switch (language) {
-		case 'JavaScript': return  <Javascript width={24}/>
-		case 'TypeScript': return  <Typescript width={24}/>
-		case 'Python': return  <Python width={24}/>
-		case 'C++': return  <CPlusPlus width={24}/>
-		case 'Go': return  <Go width={30}/>	
-	};
-}

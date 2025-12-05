@@ -1,4 +1,4 @@
-import { C, CPlusPlus, Go, Javascript, Python, Typescript } from "./icons";
+import { C, CPlusPlus, Go, Javascript, Python, Typescript } from "../../common/icons";
 
 interface Props {
   technologies: string[] | string;
