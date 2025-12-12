@@ -63,7 +63,9 @@ export const Typing = ({
 
   return (
     <span className={`inline-block ${className}`}>
-      {actual}
+      <span className={actual === text ? "text-cyan-500": ""}>
+        {actual}
+      </span>
       <span className={`inline-block w-2 ${ (cursorVisible || isNotPaused ) ? "opacity-100" : "opacity-0" } text-primary`} >
         │
       </span>

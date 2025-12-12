@@ -16,11 +16,10 @@ export default function Home() {
         <Banner /> 
       </section>
 
-      <section className="flex flex-col gap-2">
+      <section className="flex flex-col gap-2 max-w-[1100px] mx-auto">
         <Experience /> 
         <Projects /> 
         <Skills /> 
-        <hr />
         <Contact /> 
       </section>
 

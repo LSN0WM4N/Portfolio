@@ -6,7 +6,7 @@ export default function Projects() {
       <h1 className="text-3xl font-semibold mb-8">Projects</h1>
 
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center w-max[1300px] px-4"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center w-full px-4"
       >
         <Project
           imageUrl="/images/chat-lite.png"

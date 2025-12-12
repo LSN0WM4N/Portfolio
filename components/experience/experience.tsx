@@ -18,7 +18,7 @@ export default function Experience() {
     <main className="flex flex-col items-center mx-4">
       <h1 className="text-3xl font-semibold mb-8">Experience</h1>
       
-      <Timeline className="relative border-s border-default max-w-[800px]">                  
+      <Timeline className="relative border-s border-default w-full ">                  
         <HistoryItem 
           title="Manivis"
           date={["August 2025", "Today"]}
@@ -43,7 +43,7 @@ export default function Experience() {
           </ExternalRef>
           and 
           <ExternalRef href="https://stats.ioinformatics.org/people/8281"> 
-            participated in the OII.
+            participated in the IOI.
           </ExternalRef>
         </HistoryItem>
       </Timeline>
@@ -102,7 +102,7 @@ function HistoryItem({
       <TimelineContent>
         <TimelineTime>{ date }</TimelineTime>
         <TimelineTitle>{ title }</TimelineTitle>
-        <TimelineBody>{ description } {children }</TimelineBody>
+        <TimelineBody className="max-w-[60ch]">{ description } {children }</TimelineBody>
       </TimelineContent>
     </TimelineItem>
   ); 

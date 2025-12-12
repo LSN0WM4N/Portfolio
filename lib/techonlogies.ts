@@ -103,6 +103,12 @@ const technologiesDatabase: Record<string, TechnologyInfo> = {
     description: "High-level interpreted programming language known for its clean syntax and versatility in data science, AI, and backend development.",
     usedInProjects: []
   },
+  c: {
+    id: "c",
+    title: "C",
+    description: "General-purpose programming language designed to be simple, portable and efficient.",
+    usedInProjects: []
+  },
   cpp: {
     id: "cpp",
     title: "C++",
