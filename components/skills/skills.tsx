@@ -5,7 +5,7 @@ import SoftSkills from "./softSkills";
 export default function Skills() {
 
   return (
-    <main className="flex flex-col w-full items-center px-4 py-16">
+    <main className="flex flex-col w-full items-center px-4  py-16">
       <h1 className="text-4xl font-bold mb-12 tracking-tight">Skills</h1>
 
       <section

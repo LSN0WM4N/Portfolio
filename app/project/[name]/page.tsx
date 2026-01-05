@@ -30,7 +30,7 @@ export default async function Project({ params }: { params: Promise<{ name: stri
   })).slice(0, 3);
 
 	return (
-    <div className="min-h-screen py-8 px-4">
+    <div className="min-h-screen py-8 px-4 mt-14">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
 				<ProjectHeader { ...repo }/> 

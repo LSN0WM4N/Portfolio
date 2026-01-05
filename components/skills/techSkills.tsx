@@ -16,21 +16,21 @@ export default function TechSkills() {
 
       <ul className="space-y-2 text-sm tracking-wide ml-2 ">
         <h2 className="text-xl font-bold">Frontend</h2>
-        <div className="flex  gap-2">
+        <div className="flex flex-wrap gap-2">
           { frontendTechs.map(tech => (
             <TechSkillItem tech={tech} key={`front-tech-${tech}`} />
           ))}
         </div>
         
         <h2 className="text-xl font-bold">Backend</h2>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           { backendTechs.map(tech => (
             <TechSkillItem tech={tech} key={`back-tech-${tech}`} />
           ))}
         </div>
         
         <h2 className="text-xl font-bold">Others</h2>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           { othersTechs.map(tech => (
             <TechSkillItem tech={tech} key={`other-tech-${tech}`} />
           ))}

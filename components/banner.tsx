@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Sn0wm4nBanner from "@/public/images/sn0wm4n-banner.webp";
+import { Download } from "lucide-react";
+import { socialLinks } from "@/common/socialLinks";
 
 
 export default function Banner() {
@@ -27,11 +29,62 @@ export default function Banner() {
           Hello, I&apos;m <span className="text-cyan-500">Sn0wm4n</span>
         </h1>
 
-        <p className="text-lg text-gray-300 mb-6">
+        <p className="text-2xl text-gray-200 mb-4">
           Francis Rodriguez
         </p>
 
-        <p className="text-text-soft leading-relaxed mb-4">
+        <div className="flex items-center gap-3 mb-4">
+          {socialLinks.map((link, index) => (
+            <motion.a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 * index, duration: 0.3 }}
+              className={`
+                p-2 rounded-lg 
+                bg-gray-800/50 
+                border border-gray-700 
+                text-gray-300 
+                transition-all duration-300 
+                hover:scale-110 
+                hover:bg-gray-700/70 
+                hover:border-cyan-500/50
+                hover:shadow-lg hover:shadow-cyan-500/20
+                ${link.color}
+              `}
+            >
+              {link.icon}
+            </motion.a>
+          ))}
+          <motion.a
+            href="/cv/Francis-Rodriguez-CV.pdf"
+            download
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="
+              flex items-center gap-2 
+              px-4 py-2 
+              bg-cyan-500 
+              text-black 
+              font-semibold 
+              rounded-lg 
+              transition-all duration-300 
+              hover:bg-cyan-400 
+              hover:scale-105 
+              hover:shadow-lg hover:shadow-cyan-500/50
+            "
+          >
+            <Download className="w-4 h-4" />
+            Download CV
+          </motion.a>
+        </div>
+
+        <p className="text-gray-300 leading-relaxed mb-4">
           A web developer with a solid foundation in algorithms and
           competitive programming. I love finding the most efficient, clean, 
           and elegant way to solve any problem—from algorithmic challenges
