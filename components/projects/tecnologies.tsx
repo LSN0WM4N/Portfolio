@@ -5,7 +5,7 @@ interface Props {
 	size?: number;
 }
 
-export default async function Technologies({ technologies, size = 24 }: Props) {
+export default function Technologies({ technologies, size = 24 }: Props) {
 	if (typeof technologies === 'string')
 		technologies = [technologies];
 
