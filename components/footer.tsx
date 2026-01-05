@@ -2,7 +2,6 @@ import Contact from "./footer/contact";
 import Information from "./footer/information";
 import { socialLinks } from "@/common/socialLinks";
 
-// Footer principal
 export default function Footer() {
   return (
     <footer className="relative bg-black text-gray-400">
@@ -37,7 +36,6 @@ export default function Footer() {
   );
 }
 
-// Componente para los enlaces sociales
 function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
   return (
     <a

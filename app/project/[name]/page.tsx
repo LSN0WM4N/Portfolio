@@ -32,7 +32,6 @@ export default async function Project({ params }: { params: Promise<{ name: stri
 	return (
     <div className="min-h-screen py-8 px-4 mt-14">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
 				<ProjectHeader { ...repo }/> 
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">

@@ -40,8 +40,6 @@ export function CPlusPlus(props: SVGProps<SVGSVGElement>) {
 }
 
 export function HTML(props: SVGProps<SVGSVGElement>) {
-  // Nota: react-icons no tiene HTMX específico, uso HTML5 como alternativa
-  // Puedes usar otro icono si prefieres
   return <SiHtml5 color="#3366CC" {...props} />;
 }
 

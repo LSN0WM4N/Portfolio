@@ -1,75 +1,131 @@
+"use client"
+
+import { motion } from "framer-motion";
 import { LanguageIcon } from "@/common/LanguageIcon";
 import { Tooltip } from "flowbite-react";
 import { getTechnologyInfo } from "@/lib/techonlogies";
 import { Cpu } from "lucide-react";
 
 export default function TechSkills() {
-  const frontendTechs = ["ts", "js", "html", "css", "react", "nextjs", "tailwind"];
-  const backendTechs = ["nodejs", "express", "go", "python", "sql"];
-  const othersTechs = ["c", "c++"];
+  const techCategories = [
+    {
+      title: "Frontend",
+      techs: ["ts", "js", "html", "css", "react", "nextjs", "tailwind"],
+      gradient: "from-blue-500 to-cyan-500",
+      bgGlow: "bg-blue-500/5"
+    },
+    {
+      title: "Backend",
+      techs: ["nodejs", "express", "go", "python", "sql"],
+      gradient: "from-green-500 to-emerald-500",
+      bgGlow: "bg-green-500/5"
+    },
+    {
+      title: "Others",
+      techs: ["c", "c++"],
+      gradient: "from-purple-500 to-pink-500",
+      bgGlow: "bg-purple-500/5"
+    }
+  ];
 
   return (
-    <article className="bg-gray-900/50 border border-white/10 rounded-xl p-6
-                        shadow-lg sm:col-span-2 lg:col-span-1 lg:row-span-2"
+    <article className="group relative bg-gray-900/50 border border-white/10 rounded-2xl p-8 
+                        transition-all duration-150 overflow-hidden h-full"
     >
-      <h2 className="text-xl font-semibold mb-4 flex items-center gap-2"> <Cpu /> Tech skills</h2>
+      <div className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-3 mb-8"
+        >
+          <div className="p-3 bg-cyan-500/20 rounded-xl border border-cyan-500/30">
+            <Cpu className="w-7 h-7 text-cyan-400" />
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold text-white">
+              Technical Skills
+            </h2>
+            <p className="text-gray-500 text-sm mt-1">
+              Technologies I work with
+            </p>
+          </div>
+        </motion.div>
 
-      <ul className="space-y-2 text-sm tracking-wide ml-2 ">
-        <h2 className="text-xl font-bold">Frontend</h2>
-        <div className="flex flex-wrap gap-2">
-          { frontendTechs.map(tech => (
-            <TechSkillItem tech={tech} key={`front-tech-${tech}`} />
+        <div className="space-y-8">
+          {techCategories.map((category, idx) => (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15, duration: 0.6 }}
+              className="relative"
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <h3 className="text-xl font-bold text-gray-200">
+                  {category.title}
+                </h3>
+                <div className={`flex-1 h-px bg-linear-to-r ${category.gradient} opacity-20`}></div>
+              </div>
+
+              <div className="flex flex-wrap gap-3 pl-1">
+                {category.techs.map((tech, techIdx) => (
+                  <motion.div
+                    key={`${category.title}-${tech}`}
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      delay: (idx * 0.15) + (techIdx * 0.05),
+                      duration: 0.4,
+                      type: "spring",
+                      stiffness: 200
+                    }}
+                  >
+                    <TechSkillItem tech={tech} />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
-        
-        <h2 className="text-xl font-bold">Backend</h2>
-        <div className="flex flex-wrap gap-2">
-          { backendTechs.map(tech => (
-            <TechSkillItem tech={tech} key={`back-tech-${tech}`} />
-          ))}
-        </div>
-        
-        <h2 className="text-xl font-bold">Others</h2>
-        <div className="flex flex-wrap gap-2">
-          { othersTechs.map(tech => (
-            <TechSkillItem tech={tech} key={`other-tech-${tech}`} />
-          ))}
-        </div>
-      </ul>
+      </div>
     </article>
   );
 }
 
-interface Props {
-  tech: string;
-}
-
-function TechSkillItem({ tech }: Props) {
+function TechSkillItem({ tech }: { tech: string }) {
   const { title, description } = getTechnologyInfo(tech);
 
   return (
-    <li className="list-none">
-      <Tooltip
-        content={
-          <div className="p-2  rounded-lg">
-            <h3 className="font-semibold text-base">{title}</h3>
-            <hr className="my-2 opacity-20" />
-            <p className="text-sm leading-relaxed opacity-90 max-w-40">
-              {description}
-            </p>
+    <Tooltip
+      content={
+        <div className="p-4 rounded-xl max-w-xs bg-neutral-900/95 backdrop-blur-sm border border-neutral-700">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 flex items-center justify-center">
+              <LanguageIcon size={28} language={tech} />
+            </div>
+            <h3 className="font-bold text-cyan-400">{title}</h3>
           </div>
-        }
-        className="z-50 "
-      >
-        <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center
-            transition-all duration-300 hover:scale-110 hover:bg-white/15 cursor-pointer"
-        >
-          <LanguageIcon size={48} language={tech} />
+          <div className={`h-0.5 opacity-30 mb-3 rounded-full`}></div>
+          <p className="text-sm leading-relaxed text-gray-300">
+            {description}
+          </p>
         </div>
-      </Tooltip>
-    </li>
+      }
+      className="z-50"
+      style="dark"
+    >
+      <motion.div 
+        whileHover={{ y: -4 }}
+        transition={{ type: "spring", stiffness: 100 }}
+        className="group/tech relative cursor-pointer"
+      > 
+        <div className="relative w-16 h-16 rounded-xl flex items-center justify-center transition-all duration-150">
+          <LanguageIcon size={40} language={tech} />          
+        </div>
+      </motion.div>
+    </Tooltip>
   );
 }
-
-
