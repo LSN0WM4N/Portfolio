@@ -6,15 +6,14 @@ const AUTH_TOKEN = process.env.AUTH_TOKEN;
 export async function POST(req: NextRequest) {
   try {
     const { message } = await req.json();
-
+    console.log("Message:", message);
     if (!message) {
       return NextResponse.json(
         { success: false, error: "Missing message in request body" },
         { status: 400 }
       );
     }
-
-    const response = await fetch(`${ SENDER_URL }/send-message`, {
+    const response = await fetch(`${SENDER_URL}/send-message`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -23,17 +22,23 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({ text: message }),
       }
     );
-
+    console.log("Response status:", response.status);
+    console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+    
+    const responseText = await response.text();
+    console.log("Response body:", responseText);
     if (!response.ok) {
       return NextResponse.json({ 
         success: false, 
-        message: "Telegram API error" 
+        message: "Telegram API error",
+        status: response.status,
+        response: responseText
       }, { 
         status: response.status 
       });
     }
     
-    const data = await response.json();
+    const data = JSON.parse(responseText);
     return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("Telegram proxy error:", error);
