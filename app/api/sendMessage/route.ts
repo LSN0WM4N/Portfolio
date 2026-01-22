@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const SENDER_URL = process.env.SENDER_URL;
+const AUTH_TOKEN = process.env.AUTH_TOKEN;
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,15 +14,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const response = await fetch(
-      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-      {
+    const response = await fetch(`${ SENDER_URL }/send-message`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: message,
-        }),
+        headers: { 
+          "Content-Type": "application/json",
+          "Authentication": AUTH_TOKEN || "",
+        },
+        body: JSON.stringify({ text: message }),
       }
     );
 
