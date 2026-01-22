@@ -24,15 +24,16 @@ export async function POST(req: NextRequest) {
       }
     );
 
-    const data = await response.json();
-
     if (!response.ok) {
-      return NextResponse.json(
-        { success: false, error: data.description || "Telegram API error" },
-        { status: response.status }
-      );
+      return NextResponse.json({ 
+        success: false, 
+        message: "Telegram API error" 
+      }, { 
+        status: response.status 
+      });
     }
-
+    
+    const data = await response.json();
     return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("Telegram proxy error:", error);

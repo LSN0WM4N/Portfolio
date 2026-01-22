@@ -6,9 +6,9 @@ export const useNotifier = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message })
       });
-  
-      const { data } = await response.json();
-      console.log( data );
+
+      if (!response.ok) 
+        throw new Error(`Error, backend response with status: ${ response.status }`)
     } catch (error) {
       console.error(error);
     }
