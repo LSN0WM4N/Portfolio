@@ -26,7 +26,7 @@ export default function Skills() {
   };
 
   return (
-    <main className="flex flex-col w-full items-center px-4 py-24 bg-black">
+    <main className="flex flex-col w-full items-center px-4 py-24 pt-16 bg-black" id="skills">
       
       <h1 className="text-3xl font-semibold mb-8">Skills</h1>
 

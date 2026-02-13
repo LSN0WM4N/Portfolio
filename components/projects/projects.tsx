@@ -2,7 +2,7 @@ import { Project } from "./project";
 
 export default function Projects() {
   return (
-    <main className="w-full py-10 flex flex-col items-center">
+    <main className="w-full py-10 flex flex-col items-center pt-16" id="projects">
       <h1 className="text-3xl font-semibold mb-8">Projects</h1>
 
       <div

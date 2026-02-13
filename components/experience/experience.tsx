@@ -15,7 +15,7 @@ import { ExternalLink } from "lucide-react";
 
 export default function Experience() {
   return (
-    <main className="flex flex-col items-center mx-4">
+    <main className="flex flex-col items-center justify-center mx-4 min-h-lvh pt-16" id="experience">
       <h1 className="text-3xl font-semibold mb-8">Experience</h1>
       
       <Timeline className="relative border-s border-default w-full ">                  

@@ -9,7 +9,7 @@ import { socialLinks } from "@/common/socialLinks";
 
 export default function Banner() {
   return (
-    <section className="relative w-full min-h-screen bg-[000] text-white flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-screen bg-[000] text-white flex items-center justify-center overflow-hidden" id="home">
       
       <div className="absolute -left-100 top-0 h-full w-auto opacity-35 pointer-events-none select-none bg-red">
         <Image

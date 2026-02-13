@@ -4,7 +4,7 @@ import { socialLinks } from "@/common/socialLinks";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black text-gray-400">
+    <footer className="relative bg-black text-gray-400" id="contact">
       <div className="max-w-[1100px] mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           <Information />

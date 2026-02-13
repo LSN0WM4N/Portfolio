@@ -3,41 +3,47 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Typing } from "./typing";
+import Link from "next/link";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrollY, setScrollY] = useState<number>(0);
-  const [lastScrollY, setLastScrollY] = useState<number>(0);
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [scrollFlag, setScrollFlag] = useState<boolean>(true);
+  const [mouseFlag, setMouseFlag] = useState<boolean>(true);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      if (currentScrollY < 10) 
-        setIsVisible(true); 
-      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-        setOpen(false); 
-      } 
-      else if (currentScrollY < lastScrollY)
-        setIsVisible(true);
-
-      setLastScrollY(currentScrollY);
+      if (currentScrollY < 100) 
+        setScrollFlag(true); 
+      else 
+        setScrollFlag(false);
       setScrollY(currentScrollY);
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      const { y } = e;
+      if (!y)
+        return;
+      setMouseFlag(y <= 90);
+    } 
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
-    return () => { window.removeEventListener("scroll", handleScroll) };
-  }, [lastScrollY]);
+    return () => { 
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
-  const links = ["Home", "Projects", "Experience", "Skills", "Contact"];
+  const links = ["Home",  "Experience", "Projects", "Skills", "Contact"];
 
   return (
     <motion.nav
       initial={{ y: 0 }}
-      animate={{ y: isVisible ? 0 : -100 }}
+      animate={{ y: ( mouseFlag || scrollFlag ) ? 0 : -100 }}
       transition={{ 
         duration: 0.2,
         ease: "easeInOut"
@@ -52,7 +58,9 @@ export default function Header() {
         }
       `}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div 
+        className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
 
         <Typing 
           className="text-primary font-bold text-xl tracking-wide"
@@ -61,7 +69,9 @@ export default function Header() {
 
         <div className="hidden md:flex gap-6">
           {links.map(tag => (
-            <Button key={tag} tag={tag} />
+            <Link key={tag} href={`#${ tag.toLowerCase() }`}>
+              <Button tag={tag} />
+            </Link>
           ))}
         </div>
 
@@ -105,7 +115,12 @@ function Button({
   return (
     <button
       onClick={onClick}
-      className="relative group w-fit text-textMain hover:text-primary transition-colors tracking-wide"
+      className="
+        relative group w-fit 
+        text-white/90 hover:text-cyan-500 hover:scale-105 
+        hover:[text-shadow:0_0_0.5px_currentColor,0_0_0.5px_currentColor] 
+        transition-all 
+        tracking-wide"
     >
       {tag}
       <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>

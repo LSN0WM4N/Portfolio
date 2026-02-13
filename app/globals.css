@@ -13,3 +13,7 @@
 	--color-text-soft: "oklch(87.2% 0.01 258.338)";
 	--color-ice: "oklch(92% 0.05 230)";
 }
+
+html {
+  scroll-behavior: smooth;
+}
