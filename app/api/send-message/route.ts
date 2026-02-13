@@ -1,7 +1,7 @@
+import { getTGUrl } from "@/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
 
-const SENDER_URL = process.env.SENDER_URL;
-const AUTH_TOKEN = process.env.AUTH_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,15 +12,15 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-    const response = await fetch(`${SENDER_URL}/send-message`, {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Authentication": AUTH_TOKEN || "",
-        },
-        body: JSON.stringify({ text: message }),
-      }
-    );
+  
+    const response = await fetch(getTGUrl(), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: message,
+      }),
+    });
     
     const responseText = await response.text();
     if (!response.ok) {

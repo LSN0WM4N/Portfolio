@@ -1,3 +1,5 @@
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+
 export function formatBytes(bytes: number, decimals: number = 2) {
   if (bytes === 0) 
 		return '0 Bytes';
@@ -16,4 +18,9 @@ export function formatDate(dateString: string) {
 		day: 'numeric'
 	}).format(date);
 }
+
+export function getTGUrl() {
+  return `https://api.telegram.org/bot${ TELEGRAM_BOT_TOKEN }/sendMessage`;
+}
+
 
