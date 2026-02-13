@@ -45,6 +45,7 @@ export function getTechnologyInfo(technologyName: string): TechnologyInfo {
     return { ...technologiesDatabase[variations[normalizedName]] };
   }
   
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   for (const [_, tech] of Object.entries(technologiesDatabase)) {
     if (tech.title.toLowerCase().includes(normalizedName) || 
         normalizedName.includes(tech.title.toLowerCase())) {

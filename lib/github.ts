@@ -5,15 +5,10 @@ const USERNAME = 'LSN0WM4N';
 
 export async function getRepoData(repoName: string): Promise<RepoResponseType | null> {
   try {
-    const response = await fetch(
-      `${GITHUB_API}/${USERNAME}/${repoName}`,
-      {
-        headers: {
-          'Accept': 'application/vnd.github.v3+json',
-        },
-        next: { revalidate: 3600 }
-      }
-    );
+    const response = await fetch(`${GITHUB_API}/${USERNAME}/${repoName}`, {
+      headers: { 'Accept': 'application/vnd.github.v3+json' },
+      next: { revalidate: 3600 }
+    });
     
     if (!response.ok) {
       if (response.status === 404) 
@@ -22,22 +17,17 @@ export async function getRepoData(repoName: string): Promise<RepoResponseType | 
     }
     
     const repo = await response.json();
-    
-    const readmeResponse = await fetch(
-      `${GITHUB_API}/${USERNAME}/${repoName}/readme`, {
-        headers: { 'Accept': 'application/vnd.github.v3.raw' },
-      }
-    );
+    const readmeResponse = await fetch(`${GITHUB_API}/${USERNAME}/${repoName}/readme`, {
+      headers: { 'Accept': 'application/vnd.github.v3.raw' },
+    });
     
     let readmeContent = '';
-    if (readmeResponse.ok) {
+    if (readmeResponse.ok) 
       readmeContent = await readmeResponse.text();
-    }
     
-    const languagesResponse = await fetch(
-      `${GITHUB_API}/${USERNAME}/${repoName}/languages`,
-      { next: { revalidate: 3600 } }
-    );
+    const languagesResponse = await fetch(`${GITHUB_API}/${USERNAME}/${repoName}/languages`, { 
+      next: { revalidate: 3600 } 
+    });
     
     const languages = languagesResponse.ok ? await languagesResponse.json() : {};
 

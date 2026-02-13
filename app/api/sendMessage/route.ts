@@ -6,7 +6,6 @@ const AUTH_TOKEN = process.env.AUTH_TOKEN;
 export async function POST(req: NextRequest) {
   try {
     const { message } = await req.json();
-    console.log("Message:", message);
     if (!message) {
       return NextResponse.json(
         { success: false, error: "Missing message in request body" },
@@ -22,11 +21,8 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({ text: message }),
       }
     );
-    console.log("Response status:", response.status);
-    console.log("Response headers:", Object.fromEntries(response.headers.entries()));
     
     const responseText = await response.text();
-    console.log("Response body:", responseText);
     if (!response.ok) {
       return NextResponse.json({ 
         success: false, 

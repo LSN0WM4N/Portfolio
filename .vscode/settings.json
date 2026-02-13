@@ -16,5 +16,11 @@
       "createTheme(?:<\\w+>)?\\s*\\(([^)]*)\\)",
       "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?"
     ]
+  ],
+  "cSpell.words": [
+    "expressjs",
+    "reactjs",
+    "socketio",
+    "threejs"
   ]
 }
