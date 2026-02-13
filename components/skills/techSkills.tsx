@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { LanguageIcon } from "@/common/LanguageIcon";
 import { Tooltip } from "flowbite-react";
-import { getTechnologyInfo } from "@/lib/techonlogies";
+import { getTechnologyInfo } from "@/lib/technologies";
 import { Cpu } from "lucide-react";
 
 export default function TechSkills() {
