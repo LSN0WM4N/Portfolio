@@ -24,7 +24,6 @@ const nextConfig: NextConfig = {
     formats: ['image/webp'],
     unoptimized: true,
   },
-  output: "export",
 };
 
 export default withFlowbiteReact(nextConfig);
