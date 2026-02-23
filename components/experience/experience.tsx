@@ -21,7 +21,7 @@ export default function Experience() {
       <Timeline className="relative border-s border-default w-full ">                  
         <HistoryItem 
           title="Maniviss"
-          date={["August 2025", "Today"]}
+          date={["August 2025", "December 2025"]}
           description="Development of web applications using NextJs and Express frameworks. Full stack work, multimedia management, and process optimization. "
         />
 
